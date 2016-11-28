@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html style="height: 100%">
    <head>
        <meta charset="utf-8">
@@ -17,7 +17,7 @@ var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;
-app.title = 'Correlation between GDP per Capita and Life Expectancy';
+app.title = 'Correlation between GDP per Capita and Life Expectancy for male';
 
 myChart.showLoading();
 
@@ -41,7 +41,7 @@ $.get('male.json', function (data) {
     // Schema:
     var schema = [
         {name: 'Income', index: 0, text: 'GDP per capita', unit: ' $'},
-        {name: 'LifeExpectancy', index: 1, text: 'Life Expectancy', unit: ' Years'},
+        {name: 'LifeExpectancy', index: 1, text: 'Life Expectancy for male', unit: ' Years'},
         {name: 'Population', index: 2, text: 'Populaton', unit: ''},
         {name: 'Country', index: 3, text: 'Country', unit: ''}
     ];
@@ -222,7 +222,7 @@ $.get('male.json', function (data) {
 
     myChart.setOption(option);
 
-});;
+},'json');
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
