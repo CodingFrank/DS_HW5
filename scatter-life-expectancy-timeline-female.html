@@ -17,11 +17,11 @@ var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;
-app.title = 'Correlation between GDP per Capita and Life Expectancy';
+app.title = 'Correlation between GDP per Capita and Life Expectancy for female';
 
 myChart.showLoading();
 
-$.get('bd_data.json', function (data) {
+$.get('ds_2016_female.json', function (data) {
     myChart.hideLoading();
 
     var itemStyle = {
@@ -41,7 +41,7 @@ $.get('bd_data.json', function (data) {
     // Schema:
     var schema = [
         {name: 'Income', index: 0, text: 'GDP per capita', unit: ' $'},
-        {name: 'LifeExpectancy', index: 1, text: 'Life Expectancy', unit: ' Years'},
+        {name: 'LifeExpectancy', index: 1, text: 'Life Expectancy for female', unit: ' Years'},
         {name: 'Population', index: 2, text: 'Populaton', unit: ''},
         {name: 'Country', index: 3, text: 'Country', unit: ''}
     ];
@@ -97,7 +97,7 @@ $.get('bd_data.json', function (data) {
             },
             backgroundColor: '#404a59',
             title: [{
-                'text': data.timeline[0],
+                text: data.timeline[0],
                 textAlign: 'center',
                 left: '63%',
                 top: '55%',
@@ -147,7 +147,7 @@ $.get('bd_data.json', function (data) {
             },
             yAxis: {
                 type: 'value',
-                name: 'Life Expectancy',
+                name: 'Female Life Expectancy',
                 max: 100,
                 min: 20,
                 nameTextStyle: {
@@ -206,7 +206,7 @@ $.get('bd_data.json', function (data) {
         option.options.push({
             title: {
                 show: true,
-                'text': data.timeline[n] + ''
+                text: data.timeline[n] + ''
             },
             series: {
                 name: data.timeline[n],

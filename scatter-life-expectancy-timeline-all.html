@@ -21,7 +21,7 @@ app.title = 'Correlation between GDP per Capita and Life Expectancy';
 
 myChart.showLoading();
 
-$.get('bd_data.json', function (data) {
+$.get('ds_2016_all.json', function (data) {
     myChart.hideLoading();
 
     var itemStyle = {
@@ -56,9 +56,9 @@ $.get('bd_data.json', function (data) {
                 playInterval: 10000,
                 left: null,
                 right: 0,
-                top: 20,
-                bottom: 20,
-                width: 55,
+                top: 5,
+                bottom: 5,
+                width: 85,
                 height: null,
                 label: {
                     normal: {
