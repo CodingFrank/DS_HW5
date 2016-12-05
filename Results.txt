@@ -1,0 +1,103 @@
+> setwd("C:/Users/thornb/Documents/R/workspace")
+> mydata <- read.csv("GDP_Per_Capita_in_USD_Preliminary_An.csv", header=TRUE)
+> attach(mydata)
+The following objects are masked from mydata (pos = 3):
+
+    Both.sexes.Life.expectancy.at.age.60..years., Both.sexes.Life.expectancy.at.birth..years., Column, Country,
+    Female.Life.expectancy.at.age.60..years., Female.Life.expectancy.at.birth..years.,
+    GDP_Per_Capita.current.prices, Male.Life.expectancy.at.age.60..years., Male.Life.expectancy.at.birth..years.,
+    Row, Year
+
+> colnames(mydata)
+ [1] "Country"                                      "Year"                                        
+ [3] "Both.sexes.Life.expectancy.at.birth..years."  "Female.Life.expectancy.at.birth..years."     
+ [5] "Male.Life.expectancy.at.birth..years."        "Both.sexes.Life.expectancy.at.age.60..years."
+ [7] "Female.Life.expectancy.at.age.60..years."     "Male.Life.expectancy.at.age.60..years."      
+ [9] "Column"                                       "Row"                                         
+[11] "GDP_Per_Capita.current.prices"               
+> bothSubset <- subset(mydata, select=c("Both.sexes.Life.expectancy.at.birth..years.", "GDP_Per_Capita.current.prices") )
+> maleBirthSubset <- subset(mydata, select=c("Male.Life.expectancy.at.birth..years.", "GDP_Per_Capita.current.prices") )
+> femaleBirthSubset <- subset(mydata, select=c("Female.Life.expectancy.at.birth..years.", "GDP_Per_Capita.current.prices") )
+> bothSubset60 <- subset(mydata, select=c("Both.sexes.Life.expectancy.at.age.60..years.", "GDP_Per_Capita.current.prices") )
+> maleSubset60 <- subset(mydata, select=c("Male.Life.expectancy.at.age.60..years.", "GDP_Per_Capita.current.prices") )
+> femaleSubset60 <- subset(mydata, select=c("Female.Life.expectancy.at.age.60..years.", "GDP_Per_Capita.current.prices") )
+> cor(bothSubset, use="pairwise.complete.obs")
+                                            Both.sexes.Life.expectancy.at.birth..years. GDP_Per_Capita.current.prices
+Both.sexes.Life.expectancy.at.birth..years.                                   1.0000000                     0.5805427
+GDP_Per_Capita.current.prices                                                 0.5805427                     1.0000000
+> cor(maleBirthSubset, use="pairwise.complete.obs")
+                                      Male.Life.expectancy.at.birth..years. GDP_Per_Capita.current.prices
+Male.Life.expectancy.at.birth..years.                             1.0000000                     0.6016654
+GDP_Per_Capita.current.prices                                     0.6016654                     1.0000000
+> cor(femaleBirthSubset, use="pairwise.complete.obs")
+                                        Female.Life.expectancy.at.birth..years. GDP_Per_Capita.current.prices
+Female.Life.expectancy.at.birth..years.                               1.0000000                     0.5523159
+GDP_Per_Capita.current.prices                                         0.5523159                     1.0000000
+> cor(bothSubset60, use="pairwise.complete.obs")
+                                             Both.sexes.Life.expectancy.at.age.60..years. GDP_Per_Capita.current.prices
+Both.sexes.Life.expectancy.at.age.60..years.                                     1.000000                      0.667793
+GDP_Per_Capita.current.prices                                                    0.667793                      1.000000
+> cor(maleSubset60, use="pairwise.complete.obs")
+                                       Male.Life.expectancy.at.age.60..years. GDP_Per_Capita.current.prices
+Male.Life.expectancy.at.age.60..years.                              1.0000000                     0.6588777
+GDP_Per_Capita.current.prices                                       0.6588777                     1.0000000
+> cor(femaleSubset60, use="pairwise.complete.obs")
+                                         Female.Life.expectancy.at.age.60..years. GDP_Per_Capita.current.prices
+Female.Life.expectancy.at.age.60..years.                                1.0000000                     0.6470427
+GDP_Per_Capita.current.prices                                           0.6470427                     1.0000000
+> var(Both.sexes.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 86.17416
+> var(Male.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 78.16421
+> var(Female.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 97.1435
+> var(Both.sexes.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 8.189824
+> var(Male.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 6.703856
+> var(Female.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 10.50087
+> var(GDP_Per_Capita.current.prices, na.rm = TRUE)
+[1] 284695800
+> sd(Both.sexes.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 9.283004
+> sd(Male.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 8.841053
+> sd(Female.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 9.85614
+> sd(Both.sexes.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 2.861787
+> sd(Male.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 2.589181
+> sd(Female.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 3.240504
+> sd(GDP_Per_Capita.current.prices, na.rm = TRUE)
+[1] 16872.93
+> mean(Both.sexes.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 68.92617
+> mean(Male.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 66.56594
+> mean(Female.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 71.34464
+> mean(Both.sexes.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 18.85043
+> mean(Male.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 17.44759
+> mean(Female.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 20.13203
+> mean(GDP_Per_Capita.current.prices, na.rm = TRUE)
+[1] 10975.92
+> median(Both.sexes.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 71.7
+> median(Male.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 68.6
+> median(Female.Life.expectancy.at.birth..years., na.rm = TRUE)
+[1] 74.6
+> median(Both.sexes.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 18.4
+> median(Male.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 17
+> median(Female.Life.expectancy.at.age.60..years., na.rm = TRUE)
+[1] 19.8
+> median(GDP_Per_Capita.current.prices, na.rm = TRUE)
+[1] 3767.58
